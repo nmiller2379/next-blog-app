@@ -8,7 +8,7 @@ export default async function Home() {
 
   const truncateText = (text, length) => {
     return text.length > length ? text.substring(0, length) + "..." : text;
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -17,7 +17,12 @@ export default async function Home() {
         {posts.posts.map((post) => (
           <div key={post.id} className={styles.post}>
             <h2>{post.title}</h2>
-            <p>{truncateText(post.body, 100)} <Link href='#'><strong>MORE</strong></Link></p>
+            <p>
+              {truncateText(post.body, 100)}{" "}
+              <Link href={`/posts/${post.id}`}>
+                <strong>MORE</strong>
+              </Link>
+            </p>
           </div>
         ))}
       </div>
